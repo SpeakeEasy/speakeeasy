@@ -728,7 +728,7 @@ REQUIREMENTS:
 - Single self-contained HTML file, embedded CSS and JS only, no external libraries
 - Modern, clean, friendly UI — white background, rounded corners, subtle shadows, pastel accents
 - Font: use system-ui or sans-serif
-- Real-time calculations that update as the user types
+- CRITICAL: Every input MUST use oninput to instantly recalculate. Never use buttons for calculations
 - Proper UK number formatting: £ symbol, commas for thousands, 2 decimal places
 - Clear title and helpful placeholder values so it works immediately
 - Use input[type=number] for all numeric inputs
@@ -745,6 +745,7 @@ Output ONLY the complete HTML. No explanation. No markdown. Start with <!DOCTYPE
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-haiku-4-5',
+          temperature: 0,
           max_tokens: 4000,
           system,
           messages: [{ role: 'user', content: 'Build this financial tool: ' + prompt }]
