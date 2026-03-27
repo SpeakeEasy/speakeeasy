@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — SpeakeEasy</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5ff; --white: #ffffff; --purple: #6c47ff; --purple-light: #ede9ff;
+  --purple-mid: #c4b5fd; --teal: #0ecfb0; --teal-light: #d0faf4;
+  --yellow: #ffd166; --text: #1a1535; --text2: #6b6886; --text3: #a9a6bc;
+  --border: #e8e4ff; --shadow: 0 4px 24px rgba(108,71,255,0.10);
+  --radius: 16px; --radius-pill: 999px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); }
+.bg-blobs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; }
+.blob-1 { width: 500px; height: 500px; background: var(--purple-mid); top: -100px; right: -100px; animation: float1 12s ease-in-out infinite; }
+.blob-2 { width: 300px; height: 300px; background: var(--teal); bottom: 20%; left: -80px; animation: float2 15s ease-in-out infinite; }
+@keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,30px)} }
+@keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,-20px)} }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(247,245,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 40px; }
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-icon { width: 36px; height: 36px; background: var(--purple); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.logo-text { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); }
+.logo-text span { color: var(--purple); }
+.nav-links { display: flex; align-items: center; gap: 8px; }
+.nav-link { font-size: 14px; font-weight: 700; padding: 8px 16px; border-radius: var(--radius-pill); color: var(--text2); text-decoration: none; transition: all 0.15s; }
+.nav-link:hover, .nav-link.active { background: var(--white); color: var(--purple); }
+.nav-cta { background: var(--purple); color: white !important; padding: 8px 20px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 700; text-decoration: none; }
+.page { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 60px 40px 80px; }
+.hero { text-align: center; margin-bottom: 60px; }
+.hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 800; color: var(--text); margin-bottom: 16px; letter-spacing: -1.5px; }
+.hero h1 em { font-style: normal; color: var(--purple); }
+.hero p { font-size: 18px; color: var(--text2); max-width: 500px; margin: 0 auto; line-height: 1.6; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 60px; }
+.plan { background: var(--white); border-radius: 20px; padding: 36px; border: 2px solid var(--border); transition: all 0.15s; }
+.plan.featured { background: var(--purple); border-color: var(--purple); transform: scale(1.04); box-shadow: 0 16px 48px rgba(108,71,255,0.35); }
+.plan-badge { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+.plan h2 { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+.plan.featured h2 { color: white; }
+.plan-price { font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 800; color: var(--purple); line-height: 1; margin-bottom: 6px; }
+.plan.featured .plan-price { color: white; }
+.plan-period { font-size: 16px; font-weight: 600; color: var(--text3); }
+.plan.featured .plan-period { color: rgba(255,255,255,0.7); }
+.plan-desc { font-size: 15px; color: var(--text2); margin: 12px 0 24px; line-height: 1.5; }
+.plan.featured .plan-desc { color: rgba(255,255,255,0.8); }
+.plan-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+.plan.featured .plan-divider { background: rgba(255,255,255,0.2); }
+.plan-features { list-style: none; margin-bottom: 32px; }
+.plan-features li { font-size: 14px; color: var(--text2); padding: 8px 0; display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--border); }
+.plan.featured .plan-features li { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.15); }
+.plan-features li:last-child { border-bottom: none; }
+.check { color: var(--teal); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+.cross { color: var(--text3); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+.plan.featured .cross { color: rgba(255,255,255,0.3); }
+.plan-btn { display: block; text-align: center; padding: 14px; border-radius: var(--radius-pill); font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800; text-decoration: none; transition: all 0.15s; border: 2px solid var(--purple); color: var(--purple); }
+.plan-btn:hover { background: var(--purple); color: white; }
+.plan.featured .plan-btn { background: white; color: var(--purple); border-color: white; }
+.plan.featured .plan-btn:hover { background: rgba(255,255,255,0.9); }
+
+/* Feature comparison table */
+.comparison { margin-bottom: 60px; }
+.comparison h2 { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+.comparison p { color: var(--text2); margin-bottom: 24px; }
+.table-wrap { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; }
+thead th { padding: 16px 20px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; color: var(--text); background: var(--bg); text-align: left; }
+thead th:not(:first-child) { text-align: center; }
+thead th.featured-col { background: var(--purple); color: white; }
+tbody tr { border-top: 1px solid var(--border); }
+tbody tr:hover { background: var(--bg); }
+tbody td { padding: 14px 20px; font-size: 14px; color: var(--text2); }
+tbody td:not(:first-child) { text-align: center; }
+tbody td.featured-col { background: rgba(108,71,255,0.04); }
+.tick { color: var(--teal); font-size: 16px; font-weight: 900; }
+.dash { color: var(--text3); }
+
+/* FAQ */
+.faq { margin-bottom: 60px; }
+.faq h2 { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--text); margin-bottom: 24px; }
+.faq-item { background: var(--white); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 12px; border: 1px solid var(--border); cursor: pointer; }
+.faq-q { font-size: 15px; font-weight: 800; color: var(--text); display: flex; justify-content: space-between; align-items: center; }
+.faq-a { font-size: 14px; color: var(--text2); line-height: 1.7; margin-top: 12px; display: none; }
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-icon { transition: transform 0.2s; color: var(--purple); font-size: 20px; }
+
+/* Guarantee */
+.guarantee { background: var(--teal-light); border-radius: var(--radius); padding: 32px; display: flex; align-items: center; gap: 24px; border: 2px solid var(--teal); margin-bottom: 60px; }
+.guarantee-icon { font-size: 48px; flex-shrink: 0; }
+.guarantee h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+.guarantee p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .page { padding: 40px 20px; }
+  nav { padding: 0 20px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .plan.featured { transform: none; }
+  table { font-size: 12px; }
+  thead th, tbody td { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="bg-blobs"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">💸</div>
+      <div class="logo-text">Speake<span>Easy</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="/#how-it-works" class="nav-link">How it works</a>
+      <a href="/pricing.html" class="nav-link active">Pricing</a>
+      <a href="/about.html" class="nav-link">About</a>
+      <a href="/contact.html" class="nav-link">Contact</a>
+      <a href="/tool.html" class="nav-cta">✨ Try free</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <h1>Simple, honest <em>pricing</em></h1>
+    <p>Start free, upgrade when you're ready. No hidden fees, no long contracts — cancel anytime.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="plan">
+      <div class="plan-badge">FREE FOREVER</div>
+      <h2>Starter</h2>
+      <div class="plan-price">£0</div>
+      <div class="plan-period">per month</div>
+      <p class="plan-desc">Perfect for getting started and trying out SpeakeEasy risk-free.</p>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> 3 tools per month</li>
+        <li><span class="check">✓</span> All tool types</li>
+        <li><span class="check">✓</span> HTML download</li>
+        <li><span class="check">✓</span> Browser preview</li>
+        <li><span class="cross">✗</span> Excel export with formulas</li>
+        <li><span class="cross">✗</span> Priority generation</li>
+        <li><span class="cross">✗</span> Email support</li>
+        <li><span class="cross">✗</span> White-label branding</li>
+      </ul>
+      <a href="/tool.html" class="plan-btn">Get started free</a>
+    </div>
+
+    <div class="plan featured">
+      <div class="plan-badge">⭐ MOST POPULAR</div>
+      <h2>Pro</h2>
+      <div class="plan-price">£29</div>
+      <div class="plan-period">per month</div>
+      <p class="plan-desc">For business owners who need financial tools on a regular basis.</p>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Unlimited tools</li>
+        <li><span class="check">✓</span> All tool types</li>
+        <li><span class="check">✓</span> HTML download</li>
+        <li><span class="check">✓</span> Browser preview</li>
+        <li><span class="check">✓</span> Excel export with formulas</li>
+        <li><span class="check">✓</span> Priority generation</li>
+        <li><span class="check">✓</span> Email support</li>
+        <li><span class="cross">✗</span> White-label branding</li>
+      </ul>
+      <a href="/contact.html" class="plan-btn">Start free trial</a>
+    </div>
+
+    <div class="plan">
+      <div class="plan-badge">FOR AGENCIES</div>
+      <h2>Agency</h2>
+      <div class="plan-price">£79</div>
+      <div class="plan-period">per month</div>
+      <p class="plan-desc">For accountants, advisors and agencies building tools for clients.</p>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Unlimited tools</li>
+        <li><span class="check">✓</span> All tool types</li>
+        <li><span class="check">✓</span> HTML download</li>
+        <li><span class="check">✓</span> Browser preview</li>
+        <li><span class="check">✓</span> Excel export with formulas</li>
+        <li><span class="check">✓</span> Priority generation</li>
+        <li><span class="check">✓</span> Priority email & phone support</li>
+        <li><span class="check">✓</span> White-label branding</li>
+      </ul>
+      <a href="/contact.html" class="plan-btn">Contact us</a>
+    </div>
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee">
+    <div class="guarantee-icon">🛡️</div>
+    <div>
+      <h3>14-day money-back guarantee</h3>
+      <p>Not happy? We'll refund you in full, no questions asked. We're confident you'll love SpeakeEasy — but if not, we've got you covered.</p>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="comparison">
+    <h2>Full feature comparison</h2>
+    <p>See exactly what's included in each plan.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Starter</th>
+            <th class="featured-col">Pro</th>
+            <th>Agency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Tools per month</strong></td><td>3</td><td class="featured-col">Unlimited</td><td>Unlimited</td></tr>
+          <tr><td><strong>All tool types</strong></td><td><span class="tick">✓</span></td><td class="featured-col"><span class="tick">✓</span></td><td><span class="tick">✓</span></td></tr>
+          <tr><td><strong>HTML download</strong></td><td><span class="tick">✓</span></td><td class="featured-col"><span class="tick">✓</span></td><td><span class="tick">✓</span></td></tr>
+          <tr><td><strong>Browser preview</strong></td><td><span class="tick">✓</span></td><td class="featured-col"><span class="tick">✓</span></td><td><span class="tick">✓</span></td></tr>
+          <tr><td><strong>UK number formatting</strong></td><td><span class="tick">✓</span></td><td class="featured-col"><span class="tick">✓</span></td><td><span class="tick">✓</span></td></tr>
+          <tr><td><strong>Excel export with formulas</strong></td><td><span class="dash">—</span></td><td class="featured-col"><span class="tick">✓</span></td><td><span class="tick">✓</span></td></tr>
+          <tr><td><strong>Priority generation speed</strong></td><td><span class="dash">—</span></td><td class="featured-col"><span class="tick">✓</span></td><td><span class="tick">✓</span></td></tr>
+          <tr><td><strong>Email support</strong></td><td><span class="dash">—</span></td><td class="featured-col"><span class="tick">✓</span></td><td><span class="tick">✓</span></td></tr>
+          <tr><td><strong>White-label branding</strong></td><td><span class="dash">—</span></td><td class="featured-col"><span class="dash">—</span></td><td><span class="tick">✓</span></td></tr>
+          <tr><td><strong>Client tool management</strong></td><td><span class="dash">—</span></td><td class="featured-col"><span class="dash">—</span></td><td><span class="tick">✓</span></td></tr>
+          <tr><td><strong>Phone support</strong></td><td><span class="dash">—</span></td><td class="featured-col"><span class="dash">—</span></td><td><span class="tick">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Can I try before I buy? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — the Free plan lets you build 3 tools per month with no credit card required. You can upgrade to Pro whenever you're ready.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What does "Excel export with formulas" mean? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Pro users can download their generated tools as proper .xlsx Excel files with all formulas pre-built. Open in Excel or Google Sheets and the calculations work immediately — no setup needed.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What tool types can I generate? <span class="faq-icon">+</span></div>
+      <div class="faq-a">All plans support every tool type — budget planners, break-even calculators, cash flow forecasts, ROI trackers, invoice generators, runway calculators, pricing tools, and much more. If it involves numbers, SpeakeEasy can build it.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Can I cancel at any time? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Absolutely. No long-term contracts, no cancellation fees. Cancel anytime from your account settings and you'll keep access until the end of your billing period.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What's the white-label option on Agency? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Agency plan users can brand generated tools with their own logo, colours and company name. Perfect for accountants or advisors who want to offer branded financial tools to their clients.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Do I keep the tools I've already built if I downgrade? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — any tools you've already downloaded are yours to keep forever. Downgrading only affects how many new tools you can generate going forward.</div>
+    </div>
+  </div>
+</div>
+
+<footer style="background:#1a1535;color:rgba(255,255,255,0.7);padding:40px;margin-top:0;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+    <span style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:white;">Speake<span style="color:#0ecfb0;">Easy</span></span>
+    <div style="display:flex;gap:24px;font-size:14px;">
+      <a href="/" style="color:rgba(255,255,255,0.6);text-decoration:none;">Home</a>
+      <a href="/about.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">About</a>
+      <a href="/contact.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">Contact</a>
+    </div>
+    <span style="font-size:13px;">© 2026 SpeakeEasy Ltd.</span>
+  </div>
+</footer>
+
+</body>
+</html>
