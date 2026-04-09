@@ -7,28 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f7f5ff;
-  --white: #ffffff;
-  --purple: #6c47ff;
-  --purple-light: #ede9ff;
-  --purple-mid: #c4b5fd;
-  --teal: #0ecfb0;
-  --teal-light: #d0faf4;
-  --coral: #ff6b6b;
-  --yellow: #ffd166;
-  --text: #1a1535;
-  --text2: #6b6886;
-  --text3: #a9a6bc;
-  --border: #e8e4ff;
-  --shadow: 0 4px 24px rgba(108,71,255,0.10);
-  --shadow-lg: 0 8px 40px rgba(108,71,255,0.15);
-  --radius: 16px;
-  --radius-pill: 999px;
+  --bg: #f7f5ff; --white: #ffffff; --purple: #6c47ff; --purple-light: #ede9ff;
+  --purple-mid: #c4b5fd; --teal: #0ecfb0; --teal-light: #d0faf4;
+  --coral: #ff6b6b; --yellow: #ffd166; --text: #1a1535; --text2: #6b6886;
+  --text3: #a9a6bc; --border: #e8e4ff; --shadow: 0 4px 24px rgba(108,71,255,0.10);
+  --shadow-lg: 0 8px 40px rgba(108,71,255,0.15); --radius: 16px; --radius-pill: 999px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); }
-
-/* Background blobs */
 .bg-blobs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; }
 .blob-1 { width: 600px; height: 600px; background: var(--purple-mid); top: -150px; right: -150px; animation: float1 12s ease-in-out infinite; }
@@ -37,117 +23,47 @@ body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--te
 @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,40px)} }
 @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-30px)} }
 @keyframes float3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,20px)} }
-
-/* Nav */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(247,245,255,0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 40px;
-}
+nav { position: sticky; top: 0; z-index: 100; background: rgba(247,245,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 40px; }
 .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo-icon { width: 36px; height: 36px; background: var(--purple); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.logo-mark { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #6c47ff, #0ecfb0); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; color: white; letter-spacing: -1px; }
 .logo-text { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
-.logo-text span { color: var(--purple); }
+.logo-text span { color: var(--purple); position: relative; }
+.logo-text span::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 3px; background: var(--teal); border-radius: 2px; }
 .nav-links { display: flex; align-items: center; gap: 8px; }
 .nav-link { font-size: 14px; font-weight: 700; padding: 8px 16px; border-radius: var(--radius-pill); color: var(--text2); text-decoration: none; transition: all 0.15s; }
 .nav-link:hover { background: var(--white); color: var(--purple); }
-.nav-link.active { color: var(--purple); }
 .nav-cta { background: var(--purple); color: white !important; padding: 8px 20px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.15s; }
 .nav-cta:hover { background: #5538e8; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(108,71,255,0.3); }
-
-/* Page wrapper */
 .page { position: relative; z-index: 1; }
-
-/* Hero */
-.hero {
-  max-width: 900px; margin: 0 auto;
-  padding: 80px 40px 60px;
-  text-align: center;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--purple-light); color: var(--purple);
-  font-size: 13px; font-weight: 700;
-  padding: 6px 16px; border-radius: var(--radius-pill);
-  margin-bottom: 24px;
-}
+.hero { max-width: 900px; margin: 0 auto; padding: 80px 40px 60px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--purple-light); color: var(--purple); font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: var(--radius-pill); margin-bottom: 24px; }
 .hero-badge-dot { width: 7px; height: 7px; background: var(--purple); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
-.hero h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(40px, 6vw, 64px);
-  font-weight: 800; line-height: 1.1;
-  color: var(--text); margin-bottom: 20px;
-  letter-spacing: -2px;
-}
+.hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(40px, 6vw, 64px); font-weight: 800; line-height: 1.1; color: var(--text); margin-bottom: 20px; letter-spacing: -2px; }
 .hero h1 em { font-style: normal; color: var(--purple); position: relative; }
-.hero h1 em::after {
-  content: ''; position: absolute;
-  bottom: 2px; left: 0; right: 0;
-  height: 4px; background: var(--teal);
-  border-radius: 2px;
-}
-.hero p {
-  font-size: 19px; color: var(--text2);
-  max-width: 560px; margin: 0 auto 36px;
-  line-height: 1.65;
-}
+.hero h1 em::after { content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 4px; background: var(--teal); border-radius: 2px; }
+.hero p { font-size: 19px; color: var(--text2); max-width: 560px; margin: 0 auto 36px; line-height: 1.65; }
 .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--purple); color: white;
-  padding: 14px 28px; border-radius: var(--radius-pill);
-  font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800;
-  text-decoration: none; transition: all 0.15s;
-  box-shadow: 0 4px 20px rgba(108,71,255,0.3);
-}
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--purple); color: white; padding: 14px 28px; border-radius: var(--radius-pill); font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; text-decoration: none; transition: all 0.15s; box-shadow: 0 4px 20px rgba(108,71,255,0.3); }
 .btn-primary:hover { background: #5538e8; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(108,71,255,0.4); }
-.btn-secondary {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--white); color: var(--text);
-  padding: 14px 28px; border-radius: var(--radius-pill);
-  font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800;
-  text-decoration: none; transition: all 0.15s;
-  border: 2px solid var(--border);
-}
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: var(--white); color: var(--text); padding: 14px 28px; border-radius: var(--radius-pill); font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; text-decoration: none; transition: all 0.15s; border: 2px solid var(--border); }
 .btn-secondary:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-2px); }
 .hero-social-proof { margin-top: 24px; font-size: 13px; color: var(--text3); font-weight: 700; }
 .hero-social-proof span { color: var(--purple); }
-
-/* Stats strip */
 .stats { max-width: 1100px; margin: 0 auto; padding: 0 40px 60px; }
 .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.stat-card {
-  background: var(--white); border-radius: var(--radius);
-  padding: 28px; text-align: center;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
+.stat-card { background: var(--white); border-radius: var(--radius); padding: 28px; text-align: center; box-shadow: var(--shadow); border: 1px solid var(--border); }
 .stat-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: var(--purple); margin-bottom: 4px; }
 .stat-label { font-size: 14px; color: var(--text2); font-weight: 600; }
-
-/* Features */
 .section { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
 .section-label { font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
 .section-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 800; color: var(--text); margin-bottom: 12px; letter-spacing: -1px; }
 .section-sub { font-size: 17px; color: var(--text2); max-width: 520px; line-height: 1.6; margin-bottom: 48px; }
-
 .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.feature-card {
-  background: var(--white); border-radius: var(--radius);
-  padding: 28px; box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+.feature-card { background: var(--white); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; }
 .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.feature-icon {
-  width: 48px; height: 48px; border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; margin-bottom: 16px;
-}
+.feature-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
 .feature-icon.purple { background: var(--purple-light); }
 .feature-icon.teal { background: var(--teal-light); }
 .feature-icon.yellow { background: #fff6db; }
@@ -156,49 +72,22 @@ nav {
 .feature-icon.blue { background: #dbeafe; }
 .feature-card h3 { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
 .feature-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
-
-/* How it works */
-.how-bg { background: var(--white); margin: 0; padding: 80px 0; }
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 0; }
+.how-bg { background: var(--white); padding: 80px 0; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .step { text-align: center; }
-.step-num {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: var(--purple); color: white;
-  font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 16px;
-}
+.step-num { width: 52px; height: 52px; border-radius: 50%; background: var(--purple); color: white; font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
 .step h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
 .step p { font-size: 14px; color: var(--text2); line-height: 1.6; max-width: 220px; margin: 0 auto; }
-.step-arrow { font-size: 24px; color: var(--purple-mid); display: flex; align-items: center; padding-top: 16px; }
-
-/* Tool examples */
 .examples-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.example-card {
-  background: var(--white); border-radius: var(--radius);
-  padding: 20px 24px; border: 2px solid var(--border);
-  display: flex; align-items: center; gap: 16px;
-  transition: all 0.15s; cursor: pointer; text-decoration: none;
-}
+.example-card { background: var(--white); border-radius: var(--radius); padding: 20px 24px; border: 2px solid var(--border); display: flex; align-items: center; gap: 16px; transition: all 0.15s; text-decoration: none; }
 .example-card:hover { border-color: var(--purple); transform: translateY(-2px); box-shadow: var(--shadow); }
 .example-icon { font-size: 28px; }
 .example-card h4 { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 3px; }
 .example-card p { font-size: 13px; color: var(--text2); }
-
-/* Pricing */
 .pricing-bg { background: var(--white); padding: 80px 0; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 0; }
-.plan {
-  background: var(--bg); border-radius: 20px;
-  padding: 32px; border: 2px solid var(--border);
-  transition: all 0.15s;
-}
-.plan.featured {
-  background: var(--purple);
-  border-color: var(--purple);
-  transform: scale(1.04);
-  box-shadow: 0 12px 40px rgba(108,71,255,0.35);
-}
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.plan { background: var(--bg); border-radius: 20px; padding: 32px; border: 2px solid var(--border); }
+.plan.featured { background: var(--purple); border-color: var(--purple); transform: scale(1.04); box-shadow: 0 12px 40px rgba(108,71,255,0.35); }
 .plan-badge { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
 .plan h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
 .plan.featured h3 { color: white; }
@@ -214,55 +103,22 @@ nav {
 .plan-features li::before { content: '✓'; color: var(--teal); font-weight: 900; font-size: 13px; flex-shrink: 0; }
 .plan-features li.no::before { content: '✗'; color: var(--text3); }
 .plan.featured .plan-features li.no::before { color: rgba(255,255,255,0.3); }
-.plan-btn {
-  display: block; text-align: center; padding: 12px;
-  border-radius: var(--radius-pill); font-family: 'Nunito', sans-serif;
-  font-size: 15px; font-weight: 800; text-decoration: none; transition: all 0.15s;
-  background: var(--purple); color: white;
-}
+.plan-btn { display: block; text-align: center; padding: 12px; border-radius: var(--radius-pill); font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800; text-decoration: none; transition: all 0.15s; background: var(--purple); color: white; }
 .plan.featured .plan-btn { background: white; color: var(--purple); }
 .plan-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
-/* CTA banner */
-.cta-banner {
-  max-width: 1100px; margin: 60px auto;
-  background: var(--purple); border-radius: 24px;
-  padding: 60px 40px; text-align: center;
-  position: relative; overflow: hidden;
-}
-.cta-banner::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 80% 50%, rgba(14,207,176,0.2), transparent 60%);
-}
+.cta-banner { max-width: 1100px; margin: 60px auto; background: var(--purple); border-radius: 24px; padding: 60px 40px; text-align: center; position: relative; overflow: hidden; }
+.cta-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 80% 50%, rgba(14,207,176,0.2), transparent 60%); }
 .cta-banner h2 { font-family: 'Syne', sans-serif; font-size: clamp(26px, 4vw, 40px); font-weight: 800; color: white; margin-bottom: 12px; position: relative; }
 .cta-banner p { font-size: 17px; color: rgba(255,255,255,0.8); margin-bottom: 28px; position: relative; }
-.cta-banner .btn-white {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: white; color: var(--purple);
-  padding: 14px 32px; border-radius: var(--radius-pill);
-  font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800;
-  text-decoration: none; transition: all 0.15s;
-  position: relative;
-}
+.cta-banner .btn-white { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--purple); padding: 14px 32px; border-radius: var(--radius-pill); font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; text-decoration: none; transition: all 0.15s; position: relative; }
 .cta-banner .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-
-/* Testimonials */
 .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.testimonial {
-  background: var(--white); border-radius: var(--radius);
-  padding: 24px; box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
+.testimonial { background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); border: 1px solid var(--border); }
 .testimonial-stars { color: #fbbf24; font-size: 16px; margin-bottom: 12px; }
 .testimonial p { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
 .testimonial-author { font-size: 13px; font-weight: 800; color: var(--text); }
 .testimonial-role { font-size: 12px; color: var(--text3); }
-
-/* Footer */
-footer {
-  background: var(--text); color: rgba(255,255,255,0.7);
-  padding: 48px 40px 32px; margin-top: 0;
-}
+footer { background: var(--text); color: rgba(255,255,255,0.7); padding: 48px 40px 32px; }
 .footer-inner { max-width: 1100px; margin: 0 auto; }
 .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
 .footer-brand p { font-size: 14px; line-height: 1.7; margin-top: 12px; max-width: 260px; }
@@ -272,33 +128,20 @@ footer {
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
 .footer-logo-text { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: white; }
 .footer-logo-text span { color: var(--teal); }
-
-/* Responsive */
 @media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  .hero { padding: 60px 20px 40px; }
-  .section { padding: 40px 20px; }
+  nav { padding: 0 20px; } .hero { padding: 60px 20px 40px; } .section { padding: 40px 20px; }
   .stats-grid, .features-grid, .steps, .examples-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
-  .plan.featured { transform: none; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
-  .cta-banner { margin: 20px; padding: 40px 24px; }
-  .hero-btns { flex-direction: column; align-items: center; }
+  .plan.featured { transform: none; } .footer-top { grid-template-columns: 1fr 1fr; }
+  .cta-banner { margin: 20px; padding: 40px 24px; } .hero-btns { flex-direction: column; align-items: center; }
 }
 </style>
 </head>
 <body>
-
-<div class="bg-blobs">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-</div>
-
-<!-- NAV -->
+<div class="bg-blobs"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo">
-      <div class="logo-icon">💸</div>
+      <div class="logo-mark">se</div>
       <div class="logo-text">Speake<span>Easy</span></div>
     </a>
     <div class="nav-links">
@@ -310,15 +153,9 @@ footer {
     </div>
   </div>
 </nav>
-
 <div class="page">
-
-  <!-- HERO -->
   <section class="hero">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      AI-powered · Built by a qualified finance manager
-    </div>
+    <div class="hero-badge"><div class="hero-badge-dot"></div>AI-powered · Built by a qualified finance manager</div>
     <h1>Finance tools,<br><em>stupidly easy</em> to build</h1>
     <p>Describe any calculator, forecast, or financial template — get a working, interactive tool in seconds. No spreadsheets. No faff. No accountant required.</p>
     <div class="hero-btns">
@@ -327,142 +164,51 @@ footer {
     </div>
     <p class="hero-social-proof">Free to start · No credit card required · <span>3 free tools per month</span></p>
   </section>
-
-  <!-- STATS -->
   <div class="stats">
     <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-num">5M+</div>
-        <div class="stat-label">UK SMEs who need better financial tooling</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">&lt;15s</div>
-        <div class="stat-label">Average time to generate a working tool</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">£0</div>
-        <div class="stat-label">To get started — no card needed</div>
-      </div>
+      <div class="stat-card"><div class="stat-num">5M+</div><div class="stat-label">UK SMEs who need better financial tooling</div></div>
+      <div class="stat-card"><div class="stat-num">&lt;15s</div><div class="stat-label">Average time to generate a working tool</div></div>
+      <div class="stat-card"><div class="stat-num">£0</div><div class="stat-label">To get started — no card needed</div></div>
     </div>
   </div>
-
-  <!-- FEATURES -->
   <section class="section">
     <div class="section-label">Why SpeakeEasy</div>
     <div class="section-title">Everything your business needs,<br>built in seconds</div>
     <div class="section-sub">Stop wrestling with spreadsheets. Just describe what you need and get a professional, working financial tool instantly.</div>
     <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon purple">⚡</div>
-        <h3>Instant generation</h3>
-        <p>Describe your tool in plain English. Get a fully working, interactive calculator or forecast in under 15 seconds.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon teal">🇬🇧</div>
-        <h3>Built for UK businesses</h3>
-        <p>Proper UK formatting throughout — £ symbol, VAT calculations, HMRC-friendly layouts, and British date formats.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon yellow">🧠</div>
-        <h3>Finance expert AI</h3>
-        <p>Built by a qualified finance manager with real-world FP&A experience. The AI understands financial concepts, not just code.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon coral">📥</div>
-        <h3>Download & keep forever</h3>
-        <p>Every tool is a standalone HTML file. Download it, share it, embed it — works offline too. Yours to keep forever.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon green">📊</div>
-        <h3>Excel export (Pro)</h3>
-        <p>Get your tool as a fully formatted Excel spreadsheet with formulas pre-built. Perfect for sharing with accountants or investors.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon blue">🏷️</div>
-        <h3>White-label (Agency)</h3>
-        <p>Brand the tools with your logo and colours. Create client-specific tools and offer them as part of your service.</p>
-      </div>
+      <div class="feature-card"><div class="feature-icon purple">⚡</div><h3>Instant generation</h3><p>Describe your tool in plain English. Get a fully working, interactive calculator or forecast in under 15 seconds.</p></div>
+      <div class="feature-card"><div class="feature-icon teal">🇬🇧</div><h3>Built for UK businesses</h3><p>Proper UK formatting throughout — £ symbol, VAT calculations, HMRC-friendly layouts, and British date formats.</p></div>
+      <div class="feature-card"><div class="feature-icon yellow">🧠</div><h3>Finance expert AI</h3><p>Built by a qualified finance manager with real-world FP&A experience. The AI understands financial concepts, not just code.</p></div>
+      <div class="feature-card"><div class="feature-icon coral">📥</div><h3>Download & keep forever</h3><p>Every tool is a standalone HTML file. Download it, share it, embed it — works offline too. Yours to keep forever.</p></div>
+      <div class="feature-card"><div class="feature-icon green">📊</div><h3>Excel export (Pro)</h3><p>Get your tool as a fully formatted Excel spreadsheet with formulas pre-built. Perfect for sharing with accountants or investors.</p></div>
+      <div class="feature-card"><div class="feature-icon blue">🏷️</div><h3>White-label (Agency)</h3><p>Brand the tools with your logo and colours. Create client-specific tools and offer them as part of your service.</p></div>
     </div>
   </section>
-
-  <!-- HOW IT WORKS -->
   <div class="how-bg" id="how-it-works">
     <section class="section" style="padding-top:0;padding-bottom:0;">
       <div class="section-label">How it works</div>
       <div class="section-title">Three steps to your tool</div>
       <div class="section-sub">No technical knowledge needed. If you can describe it, we can build it.</div>
       <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Describe your tool</h3>
-          <p>Type what you need in plain English. Be as specific or as vague as you like — our AI understands financial context.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>AI builds it instantly</h3>
-          <p>Our finance-trained AI generates a complete, interactive tool in seconds — with calculations, formatting, and UK standards built in.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Download & use it</h3>
-          <p>Preview it right in your browser, then download as HTML or Excel. Share it, embed it, or use it yourself.</p>
-        </div>
+        <div class="step"><div class="step-num">1</div><h3>Describe your tool</h3><p>Type what you need in plain English. Be as specific or as vague as you like — our AI understands financial context.</p></div>
+        <div class="step"><div class="step-num">2</div><h3>AI builds it instantly</h3><p>Our finance-trained AI generates a complete, interactive tool in seconds — with calculations, formatting, and UK standards built in.</p></div>
+        <div class="step"><div class="step-num">3</div><h3>Download & use it</h3><p>Preview it right in your browser, then download as HTML or Excel. Share it, embed it, or use it yourself.</p></div>
       </div>
     </section>
   </div>
-
-  <!-- EXAMPLES -->
   <section class="section">
     <div class="section-label">What can you build?</div>
     <div class="section-title">Tools for every business situation</div>
     <div class="section-sub">From simple calculators to complex forecasts — if it involves numbers, SpeakeEasy can build it.</div>
     <div class="examples-grid">
-      <a href="/tool.html" class="example-card">
-        <div class="example-icon">📊</div>
-        <div>
-          <h4>Budget planner</h4>
-          <p>Monthly income, bills, subscriptions and savings tracker</p>
-        </div>
-      </a>
-      <a href="/tool.html" class="example-card">
-        <div class="example-icon">⚖️</div>
-        <div>
-          <h4>Break-even calculator</h4>
-          <p>Fixed costs, variable costs, selling price and profit chart</p>
-        </div>
-      </a>
-      <a href="/tool.html" class="example-card">
-        <div class="example-icon">🚀</div>
-        <div>
-          <h4>Startup runway calculator</h4>
-          <p>Burn rate, cash reserves and months of runway remaining</p>
-        </div>
-      </a>
-      <a href="/tool.html" class="example-card">
-        <div class="example-icon">📈</div>
-        <div>
-          <h4>ROI tracker</h4>
-          <p>Compare investment scenarios with compound interest over time</p>
-        </div>
-      </a>
-      <a href="/tool.html" class="example-card">
-        <div class="example-icon">🧾</div>
-        <div>
-          <h4>Invoice generator</h4>
-          <p>Line items, VAT calculation and clean printable layout</p>
-        </div>
-      </a>
-      <a href="/tool.html" class="example-card">
-        <div class="example-icon">💰</div>
-        <div>
-          <h4>Cash flow forecast</h4>
-          <p>12-month rolling forecast with red/green balance indicators</p>
-        </div>
-      </a>
+      <a href="/tool.html" class="example-card"><div class="example-icon">📊</div><div><h4>Budget planner</h4><p>Monthly income, bills, subscriptions and savings tracker</p></div></a>
+      <a href="/tool.html" class="example-card"><div class="example-icon">⚖️</div><div><h4>Break-even calculator</h4><p>Fixed costs, variable costs, selling price and profit chart</p></div></a>
+      <a href="/tool.html" class="example-card"><div class="example-icon">🚀</div><div><h4>Startup runway calculator</h4><p>Burn rate, cash reserves and months of runway remaining</p></div></a>
+      <a href="/tool.html" class="example-card"><div class="example-icon">📈</div><div><h4>ROI tracker</h4><p>Compare investment scenarios with compound interest over time</p></div></a>
+      <a href="/tool.html" class="example-card"><div class="example-icon">🧾</div><div><h4>Invoice generator</h4><p>Line items, VAT calculation and clean printable layout</p></div></a>
+      <a href="/tool.html" class="example-card"><div class="example-icon">💰</div><div><h4>Cash flow forecast</h4><p>12-month rolling forecast with red/green balance indicators</p></div></a>
     </div>
   </section>
-
-  <!-- PRICING PREVIEW -->
   <div class="pricing-bg">
     <section class="section" style="padding-top:0;padding-bottom:0;">
       <div class="section-label">Pricing</div>
@@ -474,78 +220,38 @@ footer {
           <h3>Free</h3>
           <div class="plan-price">£0 <span>/mo</span></div>
           <p class="plan-desc">Perfect for trying SpeakeEasy</p>
-          <ul class="plan-features">
-            <li>3 tools per month</li>
-            <li>HTML download</li>
-            <li>All tool types</li>
-            <li class="no">Excel export</li>
-            <li class="no">Priority generation</li>
-            <li class="no">White-label</li>
-          </ul>
+          <ul class="plan-features"><li>3 tools per month</li><li>HTML download</li><li>All tool types</li><li class="no">Excel export</li><li class="no">Priority generation</li><li class="no">White-label</li></ul>
           <a href="/tool.html" class="plan-btn">Get started free</a>
         </div>
         <div class="plan featured">
           <div class="plan-badge">MOST POPULAR</div>
           <h3>Pro</h3>
-          <div class="plan-price">£29 <span>/mo</span></div>
+          <div class="plan-price">£9 <span>/mo</span></div>
           <p class="plan-desc">For growing businesses</p>
-          <ul class="plan-features">
-            <li>Unlimited tools</li>
-            <li>HTML download</li>
-            <li>All tool types</li>
-            <li>Excel export with formulas</li>
-            <li>Priority generation</li>
-            <li class="no">White-label</li>
-          </ul>
+          <ul class="plan-features"><li>Unlimited tools</li><li>HTML download</li><li>All tool types</li><li>Excel export with formulas</li><li>Priority generation</li><li class="no">White-label</li></ul>
           <a href="/pricing.html" class="plan-btn">Start Pro trial</a>
         </div>
         <div class="plan">
           <div class="plan-badge">TEAMS</div>
           <h3>Agency</h3>
-          <div class="plan-price">£79 <span>/mo</span></div>
+          <div class="plan-price">£29 <span>/mo</span></div>
           <p class="plan-desc">For accountants & advisors</p>
-          <ul class="plan-features">
-            <li>Unlimited tools</li>
-            <li>HTML download</li>
-            <li>All tool types</li>
-            <li>Excel export with formulas</li>
-            <li>Priority generation</li>
-            <li>White-label + client tools</li>
-          </ul>
+          <ul class="plan-features"><li>Unlimited tools</li><li>HTML download</li><li>All tool types</li><li>Excel export with formulas</li><li>Priority generation</li><li>White-label + client tools</li></ul>
           <a href="/pricing.html" class="plan-btn">Talk to us</a>
         </div>
       </div>
       <p style="text-align:center;margin-top:24px;font-size:14px;color:var(--text3);">All plans include a 14-day money-back guarantee. No contracts, cancel anytime.</p>
     </section>
   </div>
-
-  <!-- TESTIMONIALS -->
   <section class="section">
     <div class="section-label">What people say</div>
     <div class="section-title">Trusted by UK small businesses</div>
     <div class="testimonials-grid">
-      <div class="testimonial">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"I spent 3 hours trying to build a break-even calculator in Excel. SpeakeEasy built one in 12 seconds that actually worked. Genuinely stunned."</p>
-        <div class="testimonial-author">Sarah T.</div>
-        <div class="testimonial-role">Bakery owner, Manchester</div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"As a freelancer, I always struggled to price my projects properly. The pricing calculator SpeakeEasy built me has saved me thousands."</p>
-        <div class="testimonial-author">James R.</div>
-        <div class="testimonial-role">Freelance designer, London</div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"My accountant was impressed by the cash flow forecast I showed him. He thought I'd paid someone to build it. I didn't mention it took 10 seconds."</p>
-        <div class="testimonial-author">Priya M.</div>
-        <div class="testimonial-role">E-commerce founder, Birmingham</div>
-      </div>
+      <div class="testimonial"><div class="testimonial-stars">★★★★★</div><p>"I spent 3 hours trying to build a break-even calculator in Excel. SpeakeEasy built one in 12 seconds that actually worked. Genuinely stunned."</p><div class="testimonial-author">Sarah T.</div><div class="testimonial-role">Bakery owner, Manchester</div></div>
+      <div class="testimonial"><div class="testimonial-stars">★★★★★</div><p>"As a freelancer, I always struggled to price my projects properly. The pricing calculator SpeakeEasy built me has saved me thousands."</p><div class="testimonial-author">James R.</div><div class="testimonial-role">Freelance designer, London</div></div>
+      <div class="testimonial"><div class="testimonial-stars">★★★★★</div><p>"My accountant was impressed by the cash flow forecast I showed him. He thought I'd paid someone to build it. I didn't mention it took 10 seconds."</p><div class="testimonial-author">Priya M.</div><div class="testimonial-role">E-commerce founder, Birmingham</div></div>
     </div>
   </section>
-
-  <!-- CTA -->
   <div style="padding: 0 40px;">
     <div class="cta-banner">
       <h2>Ready to build your first tool?</h2>
@@ -553,10 +259,7 @@ footer {
       <a href="/tool.html" class="btn-white">✨ Build a tool for free</a>
     </div>
   </div>
-
 </div>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -564,29 +267,12 @@ footer {
         <div class="footer-logo-text">Speake<span>Easy</span></div>
         <p>AI-powered financial tools for UK small businesses. Built by a qualified finance manager, not just a tech startup.</p>
       </div>
-      <div class="footer-col">
-        <h4>Product</h4>
-        <a href="/tool.html">Try the tool</a>
-        <a href="/#how-it-works">How it works</a>
-        <a href="/pricing.html">Pricing</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="/about.html">About us</a>
-        <a href="/contact.html">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="#">Privacy policy</a>
-        <a href="#">Terms of service</a>
-      </div>
+      <div class="footer-col"><h4>Product</h4><a href="/tool.html">Try the tool</a><a href="/#how-it-works">How it works</a><a href="/pricing.html">Pricing</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="/about.html">About us</a><a href="/contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="#">Privacy policy</a><a href="#">Terms of service</a></div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 SpeakeEasy Ltd. All rights reserved.</span>
-      <span>Made with ❤️ in the UK</span>
-    </div>
+    <div class="footer-bottom"><span>© 2026 SpeakeEasy Ltd. All rights reserved.</span><span>Made with ❤️ in the UK</span></div>
   </div>
 </footer>
-
 </body>
 </html>
